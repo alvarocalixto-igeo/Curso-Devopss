@@ -3,7 +3,7 @@ const app = express();
 const PORT = 3000;
 
 app.get('/', (req, res) => {
-  res.send('¡Hola! Soy un contenedor de Docker y funciono correctamente.');
+  res.send('¡Hola! Soy la VERSION 2.0 desplegada automáticamente 🚀');
 });
 
 app.listen(PORT, () => {
