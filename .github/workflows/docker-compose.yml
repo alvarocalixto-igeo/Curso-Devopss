@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  # SERVICIO 1: Nuestra App Web
+  mi-app-web:
+    build: .              # "Construye la imagen usando el Dockerfile de aquí"
+    ports:
+      - "5000:3000"       # "En mi PC usa el puerto 5000, redirige al 3000 de la app"
+    depends_on:
+      - redis-server      # "No arranques hasta que Redis esté listo"
+    environment:
+      - NODE_ENV=production
+
+  # SERVICIO 2: La Base de Datos (Redis)
+  redis-server:           # <--- ¡ESTE NOMBRE ES IMPORTANTE! Es el hostname.
+    image: "redis:alpine" # "Baja la imagen oficial de Redis ligera"
+    # No hace falta abrir puertos (ports) porque solo la app web necesita hablar con él internamente.
